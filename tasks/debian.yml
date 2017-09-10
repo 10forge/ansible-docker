@@ -13,7 +13,7 @@
 
 - name: install docker
   apt:
-    name: "{{forge_docker__package}}{{(forge_docker__version == 'latest') | ternary('', '={}'.format(forge_docker__version))}}"
+    name: "{{docker__package}}{{(docker__version == 'latest') | ternary('', '={}'.format(docker__version))}}"
     force: yes
     state: present
     update_cache: yes

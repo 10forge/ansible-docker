@@ -4,9 +4,8 @@
   remote_user: root
   roles:
     - role: 10f.docker
-      forge_docker__daemon_config:
+      docker__daemon_config:
       live_restore: false
       storage_driver: overlay2
       storage_opts:
         - 'overlay2.override_kernel_check=true'
-

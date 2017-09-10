@@ -14,7 +14,7 @@
     name: "{{item}}"
     groups: docker
     append: yes
-  with_items: "{{forge_docker__users}}"
+  with_items: "{{docker__users}}"
 
 - name: create /etc/docker
   file:
@@ -29,12 +29,12 @@
 
 - name: enable docker daemon
   service:
-    name: "{{forge_docker__daemon}}"
+    name: "{{docker__daemon}}"
     enabled: yes
-  when: forge_docker__enabled
+  when: docker__enabled
 
 - name: start docker daemon
   service:
-    name: "{{forge_docker__daemon}}"
+    name: "{{docker__daemon}}"
     state: started
-  when: forge_docker__started
+  when: docker__started

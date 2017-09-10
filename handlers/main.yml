@@ -2,5 +2,5 @@
 
 - name: reload docker daemon
   service:
-    name: "{{forge_docker__daemon}}"
-    state: "{{forge_docker__reload}}"
+    name: "{{docker__daemon}}"
+    state: "{{docker__reload}}"
