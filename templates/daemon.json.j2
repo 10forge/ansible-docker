@@ -1,0 +1,3 @@
+{% if forge_docker__daemon_config -%}
+  {{forge_docker__daemon_config|to_nice_json(indent=2)}}
+{% endif %}

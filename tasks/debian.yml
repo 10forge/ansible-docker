@@ -1,0 +1,19 @@
+---
+
+- name: add gpg key
+  apt_key:
+    state: present
+    url: "https://download.docker.com/linux/{{ansible_distribution|lower}}/gpg"
+
+- name: add repository
+  apt_repository:
+    filename:
+    repo: "deb https://download.docker.com/linux/{{ansible_distribution|lower}} {{ansible_distribution_release}} stable"
+    state: present
+
+- name: install docker
+  apt:
+    name: "{{forge_docker__package}}{{(forge_docker__version == 'latest') | ternary('', '={}'.format(forge_docker__version))}}"
+    force: yes
+    state: present
+    update_cache: yes

@@ -1,0 +1,40 @@
+---
+
+- name: include tasks for CentOS like distributions
+  include: centos.yml
+  when: ansible_distribution == 'CentOS'
+
+- name: include tasks for Debian like distributions
+  include: debian.yml
+  when: (ansible_distribution == 'Debian') or
+        (ansible_distribution == 'Ubuntu')
+
+- name: add users to the docker group
+  user:
+    name: "{{item}}"
+    groups: docker
+    append: yes
+  with_items: "{{forge_docker__users}}"
+
+- name: create /etc/docker
+  file:
+    dest: /etc/docker
+    state: directory
+
+- name: configure docker daemon
+  template:
+    dest: /etc/docker/daemon.json
+    src: daemon.json.j2
+  notify: reload docker daemon
+
+- name: enable docker daemon
+  service:
+    name: "{{forge_docker__daemon}}"
+    enabled: yes
+  when: forge_docker__enabled
+
+- name: start docker daemon
+  service:
+    name: "{{forge_docker__daemon}}"
+    state: started
+  when: forge_docker__started

@@ -1,0 +1,14 @@
+---
+
+# behaviour
+forge_docker__daemon_config: {}
+forge_docker__enabled: true
+forge_docker__started: true
+forge_docker__reload: reloaded
+forge_docker__users:
+  - root
+forge_docker__version: latest
+
+# internal
+forge_docker__daemon: docker
+forge_docker__package: docker-ce
