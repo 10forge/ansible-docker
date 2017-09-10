@@ -6,19 +6,18 @@ galaxy_info:
   github_branch: master
 
   platforms:
-    - name: CentOS
-      versions:
-        - 7
     - name: Debian
       versions:
-        - 8
+        - jessie
+    - name: EL
+      versions:
+        - 7
     - name: Ubuntu
       versions:
-        - 16.04
+        - xenial
 
   galaxy_tags:
     - docker
-    - docker-ce
     - install
     - config
 
