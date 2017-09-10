@@ -1,6 +1,6 @@
 ---
 
-# behaviour
+# user
 forge_docker__daemon_config: {}
 forge_docker__enabled: true
 forge_docker__started: true

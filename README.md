@@ -6,7 +6,8 @@ Install and configure docker-ce.
 Role Variables
 --------------
 
-* `forge_docker__enabled`: set this to true to enable docker (default)
+* `forge_docker__daemon_config`: a dictionary with daemon options, see `dockerd --help`
+* `forge_docker__enabled`: set this to true to enable docker on system start (default)
 * `forge_docker__started`: set this to true to start docker (default)
 * `forge_docker__users`: a list of users which will be added to the docker group (default: root)
 * `forge_docker__version`: the version of docker which will be installed (default: latest)
@@ -36,7 +37,7 @@ Example Playbook
 Restart vs reload
 ------------------
 
-The docker daemon is reloaded after every configuration change to ensure the containers keep running. Because of this major options like the storage driver will not be activated on reload. If you need the daemon to restart set `forge_docker__reload` to `restarted`. It is adviced to set `forge_docker__daemon_live_restore` to `true` when doing this.
+The docker daemon is reloaded after every configuration change to ensure the containers keep running. Because of this major options like the storage driver will not be activated on reload. If you need the daemon to restart set `forge_docker__reload` to `restarted`.
 
 License
 -------
