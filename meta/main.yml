@@ -3,14 +3,7 @@ galaxy_info:
   description: Install and configure docker-ce.
   license: MIT
   min_ansible_version: 2.3
-
-  # Optionally specify the branch Galaxy will use when accessing the GitHub
-  # repo for this role. During role install, if no tags are available,
-  # Galaxy will use this branch. During import Galaxy will access files on
-  # this branch. If Travis integration is configured, only notifications for this
-  # branch will be accepted. Otherwise, in all cases, the repo's default branch
-  # (usually master) will be used.
-  #github_branch:
+  github_branch: master
 
   platforms:
     - name: CentOS
@@ -25,6 +18,9 @@ galaxy_info:
 
   galaxy_tags:
     - docker
+    - docker-ce
+    - install
+    - config
 
 dependencies: []
   # List your role dependencies here, one per line. Be sure to remove the '[]' above,

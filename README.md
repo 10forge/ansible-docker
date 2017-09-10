@@ -6,13 +6,15 @@ Install and configure docker-ce.
 Role Variables
 --------------
 
-* `docker__daemon_config`: a dictionary with daemon options, see `dockerd --help`
-* `docker__enabled`: set this to true to enable docker on system start (default)
-* `docker__started`: set this to true to start docker (default)
-* `docker__users`: a list of users which will be added to the docker group (default: root)
-* `docker__version`: the version of docker which will be installed (default: latest)
-
-Also the daemon configuration options starting with `docker__daemon_`.
+    docker__daemon: docker
+    docker__daemon_config: {}
+    docker__enabled: true
+    docker__package: docker-ce
+    docker__started: true
+    docker__reload: reloaded
+    docker__users:
+      - root
+    docker__version: latest
 
 Example Playbook
 ----------------

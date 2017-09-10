@@ -1,14 +1,11 @@
 ---
 
-# user
+docker__daemon: docker
 docker__daemon_config: {}
 docker__enabled: true
+docker__package: docker-ce
 docker__started: true
 docker__reload: reloaded
 docker__users:
   - root
 docker__version: latest
-
-# internal
-docker__daemon: docker
-docker__package: docker-ce
