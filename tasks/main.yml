@@ -2,12 +2,11 @@
 
 - name: include tasks for CentOS like distributions
   include: centos.yml
-  when: ansible_distribution == 'CentOS'
+  when: ansible_os_family == 'RedHat'
 
 - name: include tasks for Debian like distributions
   include: debian.yml
-  when: (ansible_distribution == 'Debian') or
-        (ansible_distribution == 'Ubuntu')
+  when: ansible_os_family == 'Debian'
 
 - name: add users to the docker group
   user:

@@ -1,10 +1,12 @@
-10f.docker
+10forge.docker
 =========
 
 Install and configure docker-ce.
 
 Role Variables
 --------------
+
+Variables with default values. Values in curved brackets are by default empty. Empty values with asterisks are mandatory.
 
     docker__daemon: docker
     docker__daemon_config: {}
@@ -23,9 +25,9 @@ Example Playbook
       roles:
       - role: 10f.docker
         docker__daemon_config:
-          live_restore: false
-          storage_driver: overlay2
-          storage_opts:
+          live-restore: true
+          storage-driver: overlay2
+          storage-opts:
             - 'overlay2.override_kernel_check=true'
 
     - hosts: ubuntu1604
@@ -45,3 +47,8 @@ License
 -------
 
 MIT
+
+Author Information
+------------------
+
+[Thomas Steinert](moenka@10forge.org)
