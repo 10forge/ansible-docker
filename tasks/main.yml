@@ -13,7 +13,7 @@
     name: "{{item}}"
     groups: docker
     append: yes
-  with_items: "{{docker__users}}"
+  with_items: "{{docker_users}}"
 
 - name: create /etc/docker
   file:
@@ -28,12 +28,12 @@
 
 - name: enable docker daemon
   service:
-    name: "{{docker__daemon}}"
+    name: "{{docker_daemon}}"
     enabled: yes
-  when: docker__enabled
+  when: docker_enabled
 
 - name: start docker daemon
   service:
-    name: "{{docker__daemon}}"
+    name: "{{docker_daemon}}"
     state: started
-  when: docker__started
+  when: docker_started

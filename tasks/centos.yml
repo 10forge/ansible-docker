@@ -7,6 +7,6 @@
 
 - name: install docker
   yum:
-    name: "{{docker__package}}{{(docker__version == 'latest') | ternary('', '-{}'.format(docker__version))}}"
+    name: "{{docker_package}}{{(docker_version == 'latest') | ternary('', '-{}'.format(docker_version))}}"
     state: present
     update_cache: yes
