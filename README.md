@@ -35,7 +35,7 @@ Example Playbook
 Restart vs reload
 ------------------
 
-The docker daemon is reloaded after every configuration change to ensure the containers keep running. Because of this major options like the storage driver will not be activated on reload. If you need the daemon to restart set `-e "docker_restart=true`.
+The docker daemon is reloaded after every configuration change to ensure the containers keep running. Because of this major options like the storage driver will not be activated on reload. If you need the daemon to restart set `-e "docker_restart=true"`.
 
 Tests
 -----
