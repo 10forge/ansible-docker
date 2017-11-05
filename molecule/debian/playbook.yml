@@ -1,0 +1,8 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    - role: ansible-docker
+      docker_daemon_config:
+        live-restore: true
+        storage-driver: overlay2

@@ -1,6 +1,11 @@
 ---
-
 - name: reload docker daemon
   service:
-    name: "{{docker_daemon}}"
-    state: "{{docker_reload}}"
+    name: "{{ docker_daemon }}"
+    state: reloaded
+  when: not docker_restart
+- name: restart docker daemon
+  service:
+    name: "{{ docker_daemon }}"
+    state: restarted
+  when: docker_restart

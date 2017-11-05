@@ -1,6 +1,8 @@
+---
 galaxy_info:
   author: Thomas Steinert
   description: Install and configure docker-ce.
+  company: Binary Forge
   license: MIT
   min_ansible_version: 2.3
   github_branch: master
@@ -15,7 +17,7 @@ galaxy_info:
       versions:
         - xenial
   galaxy_tags:
+    - ce
     - docker
-    - install
-    - config
+    - docker-ce
 dependencies: []

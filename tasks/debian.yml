@@ -1,19 +1,20 @@
 ---
-
+- name: install dependencies
+  apt:
+    name: apt-transport-https
+    state: present
 - name: add gpg key
   apt_key:
     state: present
-    url: "https://download.docker.com/linux/{{ansible_distribution|lower}}/gpg"
-
+    url: "{{ docker_repo_key }}"
 - name: add repository
   apt_repository:
     filename:
-    repo: "deb https://download.docker.com/linux/{{ansible_distribution|lower}} {{ansible_distribution_release}} stable"
+    repo: "{{ docker_repo }}"
     state: present
-
 - name: install docker
   apt:
-    name: "{{docker_package}}{{(docker_version == 'latest') | ternary('', '={}'.format(docker_version))}}"
+    name: "{{ docker_package_string }}"
     force: yes
     state: present
     update_cache: yes

@@ -1,5 +1,5 @@
-10forge.docker
-=========
+forge.docker
+============
 
 Install and configure docker-ce.
 
@@ -12,8 +12,10 @@ Variables with default values. Values in curved brackets are by default empty. E
     docker_daemon_config: {}
     docker_enabled: true
     docker_package: docker-ce
+    docker_remote: false
+    docker_remote_port: 2375
+    docker_restart: false
     docker_started: true
-    docker_reload: reloaded
     docker_users:
       - root
     docker_version: latest
@@ -23,25 +25,22 @@ Example Playbook
 
     - hosts: centos7
       roles:
-      - role: 10f.docker
+      - role: forge.docker
         docker_daemon_config:
           live-restore: true
           storage-driver: overlay2
           storage-opts:
             - 'overlay2.override_kernel_check=true'
 
-    - hosts: ubuntu1604
-      roles:
-        - role: forge.docker
-          docker_users:
-            - foo
-            - bar
-          docker_version: 17.03.0~ce-0~ubuntu-xenial
-
 Restart vs reload
 ------------------
 
-The docker daemon is reloaded after every configuration change to ensure the containers keep running. Because of this major options like the storage driver will not be activated on reload. If you need the daemon to restart set `docker_reload` to `restarted`.
+The docker daemon is reloaded after every configuration change to ensure the containers keep running. Because of this major options like the storage driver will not be activated on reload. If you need the daemon to restart set `-e "docker_restart=true`.
+
+Tests
+-----
+
+Tests are processed with [molecule](https://molecule.readthedocs.io/en/latest/) and [vagrant](https://www.vagrantup.com/). To run the tests from the cli type `molecule test --all`.
 
 License
 -------
