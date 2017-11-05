@@ -1,8 +1,17 @@
 ---
 - name: Converge
   hosts: all
+  become: true
+  vars:
+    docker_restart: true
+  pre_tasks:
+    - name: install dependencies
+      apt:
+        name: net-tools
+        state: present
   roles:
     - role: ansible-docker
       docker_daemon_config:
         live-restore: true
         storage-driver: overlay2
+      docker_remote: true

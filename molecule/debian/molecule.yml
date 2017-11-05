@@ -8,8 +8,8 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: debian-8
-    box: debian/jessie64
+  # - name: debian-8
+  #   box: debian/jessie64
   - name: ubuntu-1604
     box: ubuntu/xenial64
 provisioner:

@@ -1,4 +1,8 @@
 ---
+- name: reload daemons
+  command: /bin/systemctl daemon-reload
+  tags:
+    - skip_ansible_lint
 - name: reload docker daemon
   service:
     name: "{{ docker_daemon }}"

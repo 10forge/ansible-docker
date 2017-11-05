@@ -33,6 +33,7 @@
     dest: /etc/systemd/system/docker.service.d/docker.conf
     src: docker.socket.j2
   notify:
+    - reload daemons
     - reload docker daemon
     - restart docker daemon
   when: docker_remote

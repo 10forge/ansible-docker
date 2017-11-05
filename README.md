@@ -40,7 +40,7 @@ The docker daemon is reloaded after every configuration change to ensure the con
 Tests
 -----
 
-Tests are processed with [molecule](https://molecule.readthedocs.io/en/latest/) and [vagrant](https://www.vagrantup.com/). To run the tests from the cli type `molecule test --all`.
+Tests are processed with [molecule](https://molecule.readthedocs.io/en/latest/). To run the tests from the cli type `molecule test --all`.
 
 License
 -------
