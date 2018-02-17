@@ -1,22 +1,27 @@
 ---
 - name: include distribution variables
   include_vars: "{{ ansible_os_family }}.yml"
+
 - name: include tasks for RedHat like distributions
   include: redhat.yml
   when: ansible_os_family == 'RedHat'
+
 - name: include tasks for Debian like distributions
   include: debian.yml
   when: ansible_os_family == 'Debian'
+
 - name: add users to the docker group
   user:
     name: "{{ item }}"
     groups: docker
     append: true
   with_items: "{{ docker_users }}"
+
 - name: create docker configuration directory
   file:
     dest: /etc/docker
     state: directory
+
 - name: configure docker daemon
   template:
     dest: /etc/docker/daemon.json
@@ -24,10 +29,13 @@
   notify:
     - reload docker daemon
     - restart docker daemon
+  when: docker_daemon_config != {}
+
 - name: create docker systemd drop-in directory
   file:
     path: /etc/systemd/system/docker.service.d
     state: directory
+
 - name: configure docker remote socket
   template:
     dest: /etc/systemd/system/docker.service.d/docker.conf
@@ -37,11 +45,13 @@
     - reload docker daemon
     - restart docker daemon
   when: docker_remote
+
 - name: enable docker daemon
   service:
     name: "{{ docker_daemon }}"
     enabled: true
   when: docker_enabled
+
 - name: start docker daemon
   service:
     name: "{{ docker_daemon }}"

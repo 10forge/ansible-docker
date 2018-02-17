@@ -3,6 +3,7 @@
   get_url:
     url: "{{ docker_repo }}"
     dest: /etc/yum.repos.d/docker-ce.repo
+
 - name: install docker
   yum:
     name: "{{ docker_package_string }}"

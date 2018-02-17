@@ -3,11 +3,13 @@
   command: /bin/systemctl daemon-reload
   tags:
     - skip_ansible_lint
+
 - name: reload docker daemon
   service:
     name: "{{ docker_daemon }}"
     state: reloaded
   when: not docker_restart
+
 - name: restart docker daemon
   service:
     name: "{{ docker_daemon }}"

@@ -3,15 +3,18 @@
   apt:
     name: apt-transport-https
     state: present
+
 - name: add gpg key
   apt_key:
     state: present
     url: "{{ docker_repo_key }}"
+
 - name: add repository
   apt_repository:
     filename:
     repo: "{{ docker_repo }}"
     state: present
+
 - name: install docker
   apt:
     name: "{{ docker_package_string }}"
